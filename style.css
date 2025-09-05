@@ -22,6 +22,14 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 20px;
+    overflow: hidden; /* Stops scrollbars caused by background */
+
+    /* The Animated Grid Background */
+    background-image: 
+        repeating-linear-gradient(0deg, rgba(187, 134, 252, 0.1), rgba(187, 134, 252, 0.1) 1px, transparent 1px, transparent 50px),
+        repeating-linear-gradient(90deg, rgba(187, 134, 252, 0.1), rgba(187, 134, 252, 0.1) 1px, transparent 1px, transparent 50px);
+    background-size: 50px 50px;
+    animation: moveGrid 30s linear infinite;
 }
 
 .container {
@@ -31,6 +39,7 @@ body {
     width: 90%;
     max-width: 800px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 1; /* Make sure content is above background */
 }
 
 .screen {
@@ -149,5 +158,15 @@ p {
 @media (max-width: 600px) {
     .btn-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Animation for the grid */
+@keyframes moveGrid {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -100px -100px;
     }
 }
