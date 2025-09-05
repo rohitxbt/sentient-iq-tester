@@ -1,8 +1,8 @@
 :root {
     --bg-color: #121212;
     --primary-color: #1e1e1e;
-    /* --- COLOR CHANGE HERE --- */
-    --accent-color: #FFD700; /* Classic Gold */
+    --accent-color: #bb86fc; /* Headings ke liye wapas Purple */
+    --gold-color: #FFD700;   /* Buttons ke liye naya Gold color */
     --text-color: #e0e0e0;
     --correct-color: #03dac6;
     --wrong-color: #cf6679;
@@ -23,11 +23,14 @@ body {
     min-height: 100vh;
     padding: 20px;
     overflow: hidden;
+    
+    /* --- NEW WHITE GRID BACKGROUND --- */
     background-color: var(--bg-color);
     background-image: 
-        linear-gradient(rgba(18, 18, 18, 0.85), rgba(18, 18, 18, 0.85)),
-        url('https://www.toptal.com/designers/subtlepatterns/uploads/circuit-board.png');
-    animation: moveBackground 60s linear infinite;
+        repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08) 1px, transparent 1px, transparent 50px),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.08) 1px, transparent 1px, transparent 50px);
+    background-size: 50px 50px;
+    animation: moveGrid 30s linear infinite;
 }
 
 .container {
@@ -35,11 +38,8 @@ body {
     border-radius: 15px;
     padding: 30px;
     width: 90%;
-    
-    /* --- BOX SHAPE CHANGE HERE --- */
-    max-width: 450px; /* Making the box narrower */
-    min-height: 60vh; /* Ensuring it has a vertical feel */
-    
+    max-width: 450px;
+    min-height: 60vh;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     z-index: 1;
     display: flex;
@@ -61,9 +61,8 @@ body {
 
 h1, h2 {
     margin-bottom: 20px;
-    color: var(--accent-color);
-    /* --- SHINY EFFECT HERE --- */
-    text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+    color: var(--accent-color); /* Headings ka color purple hai */
+    text-shadow: 0 0 8px rgba(187, 134, 252, 0.4); /* Purple glow */
 }
 
 p {
@@ -89,12 +88,11 @@ p {
     justify-content: center;
     align-items: center;
     font-weight: bold;
-    border: 3px solid var(--accent-color);
+    border: 3px solid var(--accent-color); /* Timer border wapas purple */
 }
 
 .btn-grid {
     display: grid;
-    /* --- BUTTONS NOW IN SINGLE COLUMN --- */
     grid-template-columns: 1fr;
     gap: 15px;
     width: 100%;
@@ -103,9 +101,9 @@ p {
 
 .btn {
     font-family: 'Roboto Mono', monospace;
-    background-color: var(--accent-color);
-    color: #1a1a1a; /* Darker text for better readability on gold */
-    border: 2px solid var(--accent-color);
+    background-color: var(--gold-color); /* Gold color yaha use hua */
+    color: #1a1a1a;
+    border: 2px solid var(--gold-color); /* Gold border */
     border-radius: 8px;
     padding: 15px;
     font-size: 1rem;
@@ -113,30 +111,28 @@ p {
     cursor: pointer;
     outline: none;
     transition: all 0.2s ease-in-out;
-    /* --- SHINY EFFECT HERE --- */
-    box-shadow: 0 0 10px 0 rgba(255, 215, 0, 0.3);
+    box-shadow: 0 0 10px 0 rgba(255, 215, 0, 0.3); /* Gold glow */
 }
 
 .btn:hover:not(:disabled) {
     background-color: transparent;
-    color: var(--accent-color);
+    color: var(--gold-color);
     transform: translateY(-2px);
-    /* --- ENHANCED SHINY EFFECT ON HOVER --- */
-    box-shadow: 0 0 15px 0 rgba(255, 215, 0, 0.5);
+    box-shadow: 0 0 15px 0 rgba(255, 215, 0, 0.5); /* Enhanced gold glow on hover */
 }
 
 .btn.correct {
     background-color: var(--correct-color);
     border-color: var(--correct-color);
     color: var(--bg-color);
-    box-shadow: none; /* Remove gold glow on result */
+    box-shadow: none;
 }
 
 .btn.wrong {
     background-color: var(--wrong-color);
     border-color: var(--wrong-color);
     color: var(--bg-color);
-    box-shadow: none; /* Remove gold glow on result */
+    box-shadow: none;
 }
 
 .btn:disabled {
@@ -157,7 +153,7 @@ p {
 
 .spinner {
     border: 8px solid rgba(255, 255, 255, 0.2);
-    border-left-color: var(--accent-color);
+    border-left-color: var(--gold-color); /* Spinner ka color bhi gold kar diya */
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -169,11 +165,11 @@ p {
     to { transform: rotate(360deg); }
 }
 
-@keyframes moveBackground {
+@keyframes moveGrid {
     from {
         background-position: 0 0;
     }
     to {
-        background-position: 256px 256px; /* 256px is the image size */
+        background-position: -100px -100px;
     }
 }
